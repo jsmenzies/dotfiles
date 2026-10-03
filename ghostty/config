@@ -60,6 +60,7 @@ font-thicken = true
 
 # Background and foreground
 background = #101320
+background-opacity = 0.95
 foreground = #fefbf6
 
 # Cursor
