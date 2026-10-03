@@ -10,7 +10,7 @@ PLATFORM_DEPENDENCIES=(
     "zoxide:required"
     "eza:required"
     "mise:required"
-    "aws:required"
+    "aws:optional"
     "antidote:special"
     "op:optional"
     "orbstack:optional"

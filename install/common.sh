@@ -181,9 +181,6 @@ create_symlinks() {
             continue
         fi
         
-        # Create parent directory
-        mkdir -p "$(dirname "$target")"
-        
         # Already correctly linked
         if [[ -L "$target" ]] && [[ "$(readlink "$target")" == "$source_path" ]]; then
             success "Already linked: $target"
@@ -202,6 +199,9 @@ create_symlinks() {
             info "[dry-run] Would link: $source_path -> $target"
             continue
         fi
+
+        # Create parent directory only when installing
+        mkdir -p "$(dirname "$target")"
 
         # Backup existing file (not symlink)
         if [[ -e "$target" && ! -L "$target" ]]; then
