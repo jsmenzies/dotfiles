@@ -1,0 +1,25 @@
+name: Argonaut
+background: "#101320"
+foreground: "#fefbf6"
+cursor: "#ec4130"
+details: darker
+
+terminal_colors:
+  normal:
+    black: "#2e2e2e"
+    red: "#ff3216"
+    green: "#b0f72e"
+    yellow: "#ffca39"
+    blue: "#359fff"
+    magenta: "#774fbb"
+    cyan: "#4be8fe"
+    white: "#feffff"
+  bright:
+    black: "#555555"
+    red: "#ff4144"
+    green: "#c5f16c"
+    yellow: "#ffdc63"
+    blue: "#3ea3ff"
+    magenta: "#9f6bf8"
+    cyan: "#92fef7"
+    white: "#feffff"
