@@ -1,3 +1,4 @@
+export PATH="$HOME/.local/bin:$PATH"
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 
 HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
@@ -44,8 +45,6 @@ fi
 if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
-
-export PATH="$HOME/.local/bin:$PATH"
 
 autoload -U compinit && compinit
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
