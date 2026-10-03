@@ -1,97 +1,337 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "litellm-dius": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "LiteLLM Dius",
-      "options": {
-        "baseURL": "https://litellm.dius.network/v1"
-      },
-      "models": {
-        "claude-3-haiku-20240307": {
-          "name": "Claude 3 Haiku (20240307)"
-        },
-        "claude-haiku-4-5": {
-          "name": "Claude Haiku 4.5"
-        },
-        "claude-haiku-4-5-20251001": {
-          "name": "Claude Haiku 4.5 (20251001)"
-        },
-        "claude-opus-4-5-20251101": {
-          "name": "Claude Opus 4.5 (20251101)"
-        },
-        "claude-sonnet-4-5": {
-          "name": "Claude Sonnet 4.5"
-        },
-        "claude-sonnet-4-5-20250929": {
-          "name": "Claude Sonnet 4.5 (20250929)"
-        },
-        "codex-mini-latest": {
-          "name": "Codex Mini Latest"
-        },
-        "gemini-2.5-flash": {
-          "name": "Gemini 2.5 Flash"
-        },
-        "gemini/gemini-2.5-flash": {
-          "name": "Gemini 2.5 Flash (Prefix)"
-        },
-        "gemini/gemma-3-27b-it": {
-          "name": "Gemma 3 27B IT"
-        },
-        "gpt-3.5-turbo": {
-          "name": "GPT-3.5 Turbo"
-        },
-        "gpt-4.1": {
-          "name": "GPT-4.1"
-        },
-        "gpt-4.1-mini": {
-          "name": "GPT-4.1 Mini"
-        },
-        "gpt-4.1-nano": {
-          "name": "GPT-4.1 Nano"
-        },
-        "gpt-4o": {
-          "name": "GPT-4o"
-        },
-        "gpt-4o-mini": {
-          "name": "GPT-4o Mini"
-        },
-        "gpt-4o-mini-transcribe": {
-          "name": "GPT-4o Mini Transcribe"
-        },
-        "gpt-4o-transcribe": {
-          "name": "GPT-4o Transcribe"
-        },
-        "gpt-5": {
-          "name": "GPT-5"
-        },
-        "gpt-5-codex": {
-          "name": "GPT-5 Codex"
-        },
-        "gpt-5-mini": {
-          "name": "GPT-5 Mini"
-        },
-        "gpt-5-nano": {
-          "name": "GPT-5 Nano"
-        },
-        "gpt-5.2": {
-          "name": "GPT-5.2"
-        },
-        "o3": {
-          "name": "o3"
-        },
-        "o3-mini": {
-          "name": "o3 Mini"
-        },
-        "o4-mini": {
-          "name": "o4 Mini"
-        },
-        "whisper-1": {
-          "name": "Whisper 1"
-        }
-      }
+  "permissions": [
+    {
+      "action": "external_directory",
+      "resource": "$HOME/*",
+      "effect": "allow"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "read",
+      "resource": "*.env",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "*.env.*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.ssh/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.aws/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.gnupg/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.kube/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.docker/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.config/gcloud/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/.config/gh/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/Library/Keychains/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/Library/Application Support/Google/Chrome/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/Library/Application Support/BraveSoftware/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/Library/Application Support/Firefox/*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "$HOME/Library/Safari/*",
+      "effect": "ask"
+    },
+    {
+      "action": "edit",
+      "resource": "$HOME/*",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "$HOME/git/*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "jq *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "rg *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "code *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git * --force*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git * -f*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "gh api *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh auth token *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh auth logout *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh secret *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh variable *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh repo delete *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh repo archive *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh repo rename *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh release delete *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh cache delete *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "gh workflow disable *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "rm *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "rmdir *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "su *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "doas *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "chmod *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "chown *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "chgrp *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "xattr *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "diskutil *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "dd *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "mkfs *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "newfs *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "mount *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "umount *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "shutdown *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "reboot *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "halt *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "poweroff *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "launchctl *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "pmset *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "bun publish *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git push * --delete*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git push --delete*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git push * :*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git push :*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "aws *",
+      "effect": "ask"
     }
-  },
+  ],
   "mcp": {
     "chrome-devtools": {
       "type": "local",
