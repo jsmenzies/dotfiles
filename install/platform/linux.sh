@@ -13,7 +13,6 @@ PLATFORM_DEPENDENCIES=(
     "antidote:special"
     "op:optional"
     "gh:optional"
-    "gh-dash:special"
     "jq:optional"
     "1password-agent:special"
 )
@@ -52,14 +51,6 @@ platform_check_special() {
             else
                 warn "1password-agent - NOT FOUND"
                 MISSING_OPTIONAL+=("1password-agent")
-            fi
-            ;;
-        gh-dash)
-            if command -v gh >/dev/null 2>&1 && gh extension list 2>/dev/null | grep -q "gh-dash"; then
-                success "gh-dash"
-            else
-                warn "gh-dash - NOT FOUND (install: gh extension install dlvhdr/gh-dash)"
-                MISSING_OPTIONAL+=("gh-dash")
             fi
             ;;
         *)

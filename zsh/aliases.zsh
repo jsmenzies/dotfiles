@@ -11,6 +11,3 @@ alias reload='source $ZDOTDIR/.zshrc'
 alias gs='git status'
 
 alias ac='autocommit --add --accept --push'
-
-# gh-dash
-alias dash='gh dash'

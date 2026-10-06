@@ -160,7 +160,6 @@ build_symlink_list() {
         "pi/mcp.json:$XDG_CONFIG_HOME/pi/agent/mcp.json"
         "agents/skills:$XDG_CONFIG_HOME/opencode/skills"
         "agents/AGENTS.md:$XDG_CONFIG_HOME/opencode/AGENTS.md"
-        "gh-dash/config.yml:$XDG_CONFIG_HOME/gh-dash/config.yml"
         "claude/statusline.sh:$XDG_CONFIG_HOME/claude/statusline.sh"
         "aws/config:$HOME/.aws/config"
     )
