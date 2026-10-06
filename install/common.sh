@@ -60,6 +60,9 @@ get_version() {
         orbstack)
             version=$(orbstack version 2>/dev/null | head -n1)
             ;;
+        jq)
+            version=$(jq --version 2>/dev/null | sed 's/^jq-//')
+            ;;
         mise)
             version=$(mise --version 2>/dev/null | head -n1 | awk '{print $1}')
             ;;
@@ -158,6 +161,7 @@ build_symlink_list() {
         "agents/skills:$XDG_CONFIG_HOME/opencode/skills"
         "agents/AGENTS.md:$XDG_CONFIG_HOME/opencode/AGENTS.md"
         "gh-dash/config.yml:$XDG_CONFIG_HOME/gh-dash/config.yml"
+        "claude/statusline.sh:$XDG_CONFIG_HOME/claude/statusline.sh"
         "aws/config:$HOME/.aws/config"
     )
 
@@ -220,6 +224,44 @@ create_symlinks() {
     
     if [[ -d "$backup_dir" ]]; then
         info "Backups: $backup_dir"
+    fi
+}
+
+# Merge claude/statusline.json into Claude Code's settings. settings.json is
+# rewritten by Claude Code and other tools, so only the statusLine key is managed.
+configure_claude_statusline() {
+    local dry_run="${1:-false}"
+    local dotfiles_dir="${2:-$(dirname "$SCRIPT_DIR")}"
+    local source_path="$dotfiles_dir/claude/statusline.json"
+    local settings="$XDG_CONFIG_HOME/claude/settings.json"
+
+    if ! command -v jq >/dev/null 2>&1; then
+        warn "jq not found, skipping Claude status line config"
+        return 0
+    fi
+
+    if [[ -f "$settings" ]] && jq -e --slurpfile want "$source_path" \
+        '.statusLine == $want[0]' "$settings" >/dev/null 2>&1; then
+        success "Already configured: Claude status line"
+        return 0
+    fi
+
+    if [[ "$dry_run" == "true" ]]; then
+        info "[dry-run] Would set statusLine in $settings"
+        return 0
+    fi
+
+    mkdir -p "$(dirname "$settings")"
+    [[ -f "$settings" ]] || echo '{}' > "$settings"
+
+    local tmp
+    tmp=$(mktemp)
+    if jq --slurpfile want "$source_path" '.statusLine = $want[0]' "$settings" > "$tmp"; then
+        mv "$tmp" "$settings"
+        success "Configured: Claude status line"
+    else
+        rm -f "$tmp"
+        warn "Failed to update $settings"
     fi
 }
 
@@ -320,5 +362,6 @@ run_install() {
 
     build_symlink_list
     create_symlinks "$dry_run" "$backup_dir" "$DOTFILES_DIR"
+    configure_claude_statusline "$dry_run" "$DOTFILES_DIR"
     verify_dependencies
 }

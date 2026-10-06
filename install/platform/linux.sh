@@ -14,6 +14,7 @@ PLATFORM_DEPENDENCIES=(
     "op:optional"
     "gh:optional"
     "gh-dash:special"
+    "jq:optional"
     "1password-agent:special"
 )
 

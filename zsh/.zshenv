@@ -21,3 +21,6 @@ export NUGET_PACKAGES="$XDG_CACHE_HOME/nuget/packages"
 
 # pi coding agent
 export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi/agent"
+
+# Claude Code
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"

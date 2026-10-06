@@ -16,6 +16,7 @@ PLATFORM_DEPENDENCIES=(
     "orbstack:optional"
     "gh:optional"
     "gh-dash:special"
+    "jq:optional"
     "1password-agent:special"
 )
 
