@@ -11,3 +11,6 @@ alias reload='source $ZDOTDIR/.zshrc'
 alias gs='git status'
 
 alias ac='autocommit --add --accept --push'
+
+# OpenCode
+alias oc='opencode'
