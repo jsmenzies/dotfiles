@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/runkids/skillshare/main/schemas/config.schema.json
+
+sources:
+  skills: ~/skills
+
+mode: merge
+
+targets:
+  claude:
+    skills:
+      path: ~/.config/claude/skills
+  opencode:
+    skills:
+      path: ~/.config/opencode/skills
+  pi:
+    skills:
+      path: ~/.config/pi/agent/skills
+
+ignore:
+  - .DS_Store
+  - .git/
+  - __pycache__/
+
+audit:
+  block_threshold: CRITICAL
+
+preserve_tilde_on_save: true

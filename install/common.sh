@@ -158,8 +158,7 @@ build_symlink_list() {
         "pi/themes:$XDG_CONFIG_HOME/pi/agent/themes"
         "pi/extensions:$XDG_CONFIG_HOME/pi/agent/extensions"
         "pi/mcp.json:$XDG_CONFIG_HOME/pi/agent/mcp.json"
-        "agents/skills:$XDG_CONFIG_HOME/opencode/skills"
-        "agents/AGENTS.md:$XDG_CONFIG_HOME/opencode/AGENTS.md"
+        "skillshare/global.yaml:$XDG_CONFIG_HOME/skillshare/config.yaml"
         "claude/statusline.sh:$XDG_CONFIG_HOME/claude/statusline.sh"
         "aws/config:$HOME/.aws/config"
     )
