@@ -1,0 +1,23 @@
+{
+  "name": "ghost-theme",
+  "displayName": "Ghost",
+  "description": "A VS Code theme based on a custom Ghostty palette.",
+  "version": "0.0.1",
+  "publisher": "jsmenzies",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Ghost",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ghostty-color-theme.json"
+      }
+    ]
+  }
+}
